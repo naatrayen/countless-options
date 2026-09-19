@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Countless options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #1f2a44;          /* page background */
+    --paper: #f7f3fb;       /* book page */
+    --ink: #232033;         /* text */
+    --accent: #e8a33d;      /* buttons */
+    --accent-dark: #b9791a;
+    --muted: #7a7590;
+    --radius: 18px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; margin: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Literata", Georgia, serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  /* ---------- The book ---------- */
+  .book {
+    width: 100%;
+    max-width: 720px;
+    background: var(--paper);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+  }
+
+  .story-title {
+    margin: 0;
+    padding: 14px 24px;
+    font: 800 1rem "Nunito", system-ui, sans-serif;
+    color: var(--muted);
+    border-bottom: 1px solid #e3ddee;
+  }
+
+  /* ---------- Pages ---------- */
+  .page { display: none; }
+  .page.active { display: block; animation: turn .35s ease; }
+
+  @keyframes turn {
+    from { opacity: 0; transform: translateX(var(--from, 24px)); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .page img,
+  .placeholder {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: #d9d2e8;
+  }
+
+  .placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    font: 800 1rem "Nunito", system-ui, sans-serif;
+    color: #5b5473;
+  }
+
+  .text { padding: 24px 28px 8px; }
+
+  .text h2 {
+    margin: 0 0 10px;
+    font: 800 1.6rem/1.2 "Nunito", system-ui, sans-serif;
+  }
+
+  .text p {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 62ch;
+  }
+
+  /* ---------- Buttons ---------- */
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 24px 24px;
+  }
+
+  .controls button {
+    font: 800 1rem "Nunito", system-ui, sans-serif;
+    background: var(--accent);
+    color: #2b1c00;
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 24px;
+    cursor: pointer;
+    min-width: 110px;
+    transition: background .15s;
+  }
+
+  .controls button:hover:not(:disabled) { background: var(--accent-dark); color: #fff; }
+  .controls button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .controls button:disabled { opacity: .35; cursor: default; }
+
+  #counter {
+    font: 600 .95rem "Nunito", system-ui, sans-serif;
+    color: var(--muted);
+  }
+
+  @media (max-width: 480px) {
+    .text { padding: 18px 18px 4px; }
+    .text h2 { font-size: 1.35rem; }
+    .text p { font-size: 1.05rem; }
+    .controls { padding: 14px 18px 20px; }
+    .controls button { min-width: 90px; padding: 11px 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page.active { animation: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<main class="book">
+
+  <!-- STORY TITLE: change it here -->
+  <h1 class="story-title">Stop </h1>
+
+  <!--
+    ============================================================
+    HOW TO EDIT
+    - Each page is one <section> below (Page 1 ... Page 10).
+    - Change the image path in src="..." (put your images in an "images" folder).
+    - Change the title inside <h2> and the story words inside <p>.
+    - To add a page: copy a whole <section> block and paste it after the last one.
+      The buttons and "Page X of Y" update automatically.
+    - To delete a page: delete its whole <section> block.
+    ============================================================
+  -->
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <section class="page">
+    <img src="1.jpg" alt="A small lighthouse on a green hill">
+    <div class="text">
+      <p>This is Rayen </p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <section class="page">
+    <img src="2.jpg" alt="A girl climbing the hill at sunrise">
+    <div class="text">
+    
+      <p>And this is Eya </p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 3 ==================== -->
+  <section class="page">
+    <img src="4.jpg" alt="Dark clouds over the sea">
+    <div class="text">
+      <p>Rayen and Eya are in a relationship</p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 4 ==================== -->
+  <section class="page">
+    <img src="3.jpg" alt="Fishing boats returning in the dark">
+    <div class="text">
+      <p>But eya she was talking to other guys, regardless of what type of relationship they had. Whether it was a friendship, something casual ,it always caused tension.</p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 5 ==================== -->
+  <section class="page">
+    <img src="5.png" alt="Mira holding a dead lamp">
+    <div class="text">
+      <p>Rayen had tried to explain to her many times that this was something he could not accept. He had repeatedly told her how much it bothered him, making it clear that, to him, talking to other men is boundary something he considered unforgivable.</p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 6 ==================== -->
+  <section class="page">
+    <img src="6.png" alt="Villagers carrying lanterns">
+    <div class="text">
+      <p>At first, Eya respected Rayen’s feelings and was willing to accept that boundary. However, as time went by, she slowly returned to talking to other guys, despite knowing how strongly Rayen felt about it.
+</p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 7 ==================== -->
+  <section class="page">
+    <img src="7.png" alt="A line of lanterns climbing the hill">
+    <div class="text">
+      
+      <p>Rayen knows he can't stop her from talking to other guys. Maybe she's caught in a situation or something . So he gives her space. He pretends not to notice, though he sees everything, and he chooses to stay quiet</p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 8 ==================== -->
+  <section class="page">
+    <img src="8.jpg" alt="The hilltop shining with lights">
+    <div class="text">
+      
+      <p>Exmple</p>
+    </div>
+  </section>
+    <!-- ==================== PAGE 8 ==================== -->
+  <section class="page">
+    <img src="12.jpg" alt="The hilltop shining with lights">
+    <div class="text">
+      
+      <p>Another Exmple</p>
+        <p>( And ofc The unseen could be far worse than what was seen)
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 9 ==================== -->
+  <section class="page">
+    <img src="9.png" alt="Boats arriving safely at the harbor">
+    <div class="text">
+      
+      <p>But at some point, Rayen can no longer stay calm. He has spent so long fighting his own boundaries, swallowing every question and holding back every word, that the silence starts to crack. And when he finally tries to express himself, he finds...</p>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 10 ==================== -->
+  <section class="page">
+    <img src="10.png" alt="Sunrise over the calm sea and the lighthouse">
+    <div class="text">
+      
+      <p>She laughs like it's nothing. She doesn't give a damn, and she says other guys' names without a trace of shame, casually, as if the words don't cut. And every time she does, something in him goes quiet.</p>
+    </div>
+  </section>
+   <!-- ==================== PAGE 11 ==================== -->
+  <section class="page">
+    <img src="11.png" alt="Sunrise over the calm sea and the lighthouse">
+    <div class="text">
+      
+      <p>And as always, Eya came back to fix what she had broken. She knew he hated this. She knew where it was heading. She did it anyway, on purpose, and only when the damage was done did she reach out to repair it. Rayen had learned to see the pattern: break it, regret it, fix it, repeat.</p>
+    </div>
+  </section>
+    <!-- ==================== ENDING PAGE ==================== -->
+  <section class="page">
+    <div class="text" style="padding: 90px 28px 70px; text-align: center;">
+      <h2 style="font-size: 2.4rem; margin: 0;">The End</h2>
+    </div>
+  </section>
+
+  <!-- ==================== BUTTONS (do not edit) ==================== -->
+  <nav class="controls">
+    <button id="prev" type="button">Previous</button>
+    <span id="counter" aria-live="polite"></span>
+    <button id="next" type="button">Next</button>
+  </nav>
+
+</main>
+
+<script>
+  const pages = Array.from(document.querySelectorAll(".page"));
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+  const counter = document.getElementById("counter");
+  let current = 0;
+
+  // If an image file is missing, show a labeled placeholder so you know which one to add.
+  pages.forEach((page) => {
+    const img = page.querySelector("img");
+    if (!img) return;
+    img.addEventListener("error", () => {
+      const box = document.createElement("div");
+      box.className = "placeholder";
+      box.textContent = "Add your image here: " + img.getAttribute("src");
+      img.replaceWith(box);
+    });
+  });
+
+  function show(index, direction) {
+    current = Math.max(0, Math.min(pages.length - 1, index));
+    pages.forEach((p, i) => p.classList.toggle("active", i === current));
+    pages[current].style.setProperty("--from", direction === "back" ? "-24px" : "24px");
+
+    counter.textContent = "Page " + (current + 1) + " of " + pages.length;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === pages.length - 1;
+  }
+
+  prevBtn.addEventListener("click", () => show(current - 1, "back"));
+  nextBtn.addEventListener("click", () => show(current + 1, "forward"));
+
+  // Keyboard arrows
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") show(current + 1, "forward");
+    if (e.key === "ArrowLeft") show(current - 1, "back");
+  });
+
+  // Swipe on phone
+  let startX = null;
+  document.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener("touchend", (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1), dx < 0 ? "forward" : "back");
+    startX = null;
+  });
+
+  show(0, "forward");
+</script>
+
+</body>
+</html>
